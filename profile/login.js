@@ -1,4 +1,4 @@
-import * as AuthModule from "/db.js";
+import * as AuthModule from "../db.js";
 
 const {
   app,
@@ -12,7 +12,6 @@ const {
 } = AuthModule;
 
 export async function loadLoginPopup(triggerButtonId = "login-btn") {
-  // Buat container popup sekali saja
   let container = document.getElementById("login-container");
   if (!container) {
     container = document.createElement("div");

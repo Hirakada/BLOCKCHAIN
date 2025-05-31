@@ -1,4 +1,4 @@
-import * as AuthModule from "/db.js";
+import * as AuthModule from "../db.js";
 
 const {
     app,
