@@ -1,29 +1,26 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, collection, doc, setDoc, getDocs, getDoc, query, where } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+import * as AuthModule from "/db.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAgRMFGMhKWGT__r51fzNeiwdvlcAcIYZs",
-  authDomain: "blockchain-web-27c09.firebaseapp.com",
-  databaseURL: "https://blockchain-web-27c09-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "blockchain-web-27c09",
-  storageBucket: "blockchain-web-27c09.firebasestorage.app",
-  messagingSenderId: "527520522271",
-  appId: "1:527520522271:web:896250911821f03e29b52a",
-  measurementId: "G-VCXSDBRDPN"
-};
+const {
+    app,
+    db,
+    auth,
+    collection,
+    doc,
+    setDoc,
+    addDoc,
+    getDocs,
+    getDoc,
+    query,
+    where,
+    getAuth,
+    createUserWithEmailAndPassword,
+    deleteUser
+} = AuthModule;
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
-const auth = getAuth(app);
+console.log(app);
+console.log(auth);
+console.log(db);
+
 
 // Logika pemilihan paket untuk form harga dan berlangganan
 document.addEventListener('DOMContentLoaded', function () {
@@ -240,7 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return isValid;
     }
 
-
     //Save data ke Firebase
     async function saveData() {
         console.log("saveData function called");
@@ -250,30 +246,56 @@ document.addEventListener('DOMContentLoaded', function () {
             plan: selectedPlanData.name
         });
 
-        const userCredential = await createUserWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
-        const user = userCredential.user;
-        
-        const docId = userCredential.user.uid;
-        console.log("User registered with UID:", user.uid);
+        const email = emailInput.value.trim();
+        const docId = email.replace(/[^a-zA-Z0-9]/g, '_');
+        const password = passwordInput.value;
 
-        const docRef = doc(db, "account", user.uid);
+        const planDuration = 1; //1 menit untuk simulasi
+        const startDate = new Date();
+        const endDate = new Date(startDate.getTime() + planDuration * 60 * 1000);
+
+        let user = null;
 
         try {
-            const submitDate = new Date();
-            const subsEndDate = new Date(submitDate);
-            subsEndDate.setMonth(subsEndDate.getMonth() + 1);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            user = userCredential.user;
+            
+            console.log("User registered with UID:", user.uid);
 
-            await setDoc(docRef, {
+            await setDoc(doc(db, "users", docId), {
+                id: user.uid,
                 fullName: fullNameInput.value,
                 email: emailInput.value.trim(),
                 plan: selectedPlanData.name,
+                planEnd: endDate,
                 status: true
             });
+            
+            await addDoc(collection(db, "users", docId, "payment"), {
+                plan: selectedPlanData.name,
+                price: selectedPlanData.price,
+                duration: `${planDuration} minute`,
+                bank: paymentBank.textContent,
+                virtualAccount: paymentVaNumber.textContent,
+                paidAt: startDate,
+                status: "Paid"
+            });            
 
             alert("✅ Saved to Firebase!");
         } catch (err) {
-            console.error("❌ Detailed Firebase error:", err);
-            throw err; // Re-throw to handle in calling function
+            console.error("❌ Error saat createUser atau setDoc:", err);
+
+            // Cek kalau user sudah ter-assign baru hapus
+            if (user) {
+                try {
+                    await deleteUser(user);
+                    console.log("User deleted due to Firestore error");
+                } catch (deleteErr) {
+                    console.error("❌ Gagal menghapus user setelah error:", deleteErr);
+                }
+            }
+
+            alert("Gagal registrasi: " + err.message);
         }
     }
 
@@ -316,12 +338,6 @@ document.addEventListener('DOMContentLoaded', function () {
             paymentSuccess.style.display = 'block';
             checkPaymentBtn.textContent = 'Registrasi Selesai!';
             checkPaymentBtn.disabled = false;
-
-            // For free plans
-            checkPaymentBtn.addEventListener('click', function () {
-                saveData(); // This is async but not awaited
-                window.location.href = "/index.html"; // Redirects immediately
-            });
 
         } else {
             // Untuk paket berbayar, tampilkan informasi VA
@@ -432,35 +448,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Tambah event listener klik ke tombol Periksa Detail Pembayaran
     if (checkPaymentBtn) {
         checkPaymentBtn.addEventListener('click', async function () {
-            if (selectedPlanData.price === 'Free') {
-                // Double-check for duplicate email before saving
-                const isSubscribed = await checkSubscriptionByIdAndEmail(emailInput.value.trim());
-                
-                if (isSubscribed) {
-                    alert("❌ Email sudah digunakan dengan langganan masih aktif!");
-                    return; // Stop execution
-                }
-                
-                try {
-                    await saveData(); // Wait for save to complete
-                    alert("✅ Registration successful!");
-                    window.location.href = "/index.html";
-                } catch (err) {
-                    console.error("Failed to save data:", err);
-                    alert("Registration failed. Please try again.");
-                }
-            } else {
+            const btnText = checkPaymentBtn.textContent.trim();
+
+            if (btnText === "Periksa Detail Pembayaran") {
                 await showPaymentDetails();
+            } else if (btnText === "Registrasi Selesai!") {
+                await saveData();
+                checkPaymentBtn.textContent = "Periksa Detail Pembayaran"; 
+                window.location.href = "/index.html";
             }
         });
     }
 
-    // Fungsi copy nomor VA
+    // Fungsi copy nomor VA untuk simulasi pembayaran
     if (copyVaBtn) {
-        copyVaBtn.addEventListener('click', function () {
+        copyVaBtn.addEventListener('click', async function () {
             const vaNumber = paymentVaNumber.textContent;
 
             // Buat elemen textarea sementara untuk copy
@@ -481,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.textContent = originalText;
 
                 // For paid plans
-                saveData(); // This is async but not awaited
+                await saveData(); // This is async but not awaited
                 window.location.href = "/index.html"; // Redirects immediately
             } catch (err) {
                 console.error('Gagal menyalin: ', err);
@@ -516,17 +520,6 @@ document.addEventListener('DOMContentLoaded', function () {
             termsError.textContent = '';
         }
     });
-
-    async function handleSaveAndRedirect() {
-        try {
-        await saveData(); // Wait for save to complete
-        alert("✅ Registration successful!");
-        window.location.href = "/index.html";
-        } catch (err) {
-        console.error("Failed to save data:", err);
-        alert("Registration failed. Please try again.");
-        }
-    }
 });
 
 
