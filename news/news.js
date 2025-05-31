@@ -110,7 +110,7 @@ function renderNewsCards(newsArray) {
         const card = document.createElement('div');
         card.className = 'news-card';
         card.innerHTML = `
-            <img src="${news.imageurl}" alt="${news.title}" class="news-card-image" onerror="this.src='/assets/news-placeholder.jpg'">
+            <img src="${news.imageurl}" alt="${news.title}" class="news-card-image" onerror="this.src='assets/news-placeholder.jpg'">
             <div class="news-card-content">
                 <span class="news-card-category">${getCategoryBadge(news.categories)}</span>
                 <h3 class="news-card-title">${news.title}</h3>
@@ -119,7 +119,7 @@ function renderNewsCards(newsArray) {
                     <span class="source">${news.source_info.name}</span>
                     <span class="date">${formattedDate} ${formattedTime}</span>
                 </div>
-                <a href="../${news.url}" target="_blank" class="news-card-link">Baca Selengkapnya</a>
+                <a href="${news.url}" target="_blank" class="news-card-link">Baca Selengkapnya</a>
             </div>
         `;
         

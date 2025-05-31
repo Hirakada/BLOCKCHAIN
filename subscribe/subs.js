@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //Apabila copy VA tidak diklik selama 5 detik maka payment failed
             let copyTimeout = setTimeout(() => {
                 alert("❌ Pembayaran gagal karena tidak menyalin nomor VA.");
-                window.location.href = "/index.html";
+                window.location.href = "../index.html";
             }, timerDuration*1000);
 
             // Mmbatalkan timeout jika tombol copy ditekan
@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (btnText === "Registrasi Selesai!") {
                 await saveData();
                 checkPaymentBtn.textContent = "Periksa Detail Pembayaran"; 
-                window.location.href = "/index.html";
+                window.location.href = "../index.html";
             }
         });
     }
@@ -486,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // For paid plans
                 await saveData(); // This is async but not awaited
-                window.location.href = "/index.html"; // Redirects immediately
+                window.location.href = "../index.html"; // Redirects immediately
             } catch (err) {
                 console.error('Gagal menyalin: ', err);
             }

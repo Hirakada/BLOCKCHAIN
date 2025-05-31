@@ -21,7 +21,7 @@ export async function loadLoginPopup(triggerButtonId = "login-btn") {
   }
 
   try {
-    const response = await fetch("/profile/login.html");
+    const response = await fetch("profile/login.html");
     const html = await response.text();
     container.innerHTML = html;
 
