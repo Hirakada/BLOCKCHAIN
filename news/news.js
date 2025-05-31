@@ -119,7 +119,7 @@ function renderNewsCards(newsArray) {
                     <span class="source">${news.source_info.name}</span>
                     <span class="date">${formattedDate} ${formattedTime}</span>
                 </div>
-                <a href="${news.url}" target="_blank" class="news-card-link">Baca Selengkapnya</a>
+                <a href="../${news.url}" target="_blank" class="news-card-link">Baca Selengkapnya</a>
             </div>
         `;
         

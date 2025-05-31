@@ -448,7 +448,7 @@ async function loadExchanges() {
                     </div>
                 </div>
                 
-                <a href="${exchange.url}" target="_blank" rel="noopener noreferrer" class="exchange-link">Visit Exchange</a>
+                <a href="../${exchange.url}" target="_blank" rel="noopener noreferrer" class="exchange-link">Visit Exchange</a>
             `;
             
             exchangesContainer.appendChild(exchangeCard);
