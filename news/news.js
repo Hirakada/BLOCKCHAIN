@@ -110,7 +110,7 @@ function renderNewsCards(newsArray) {
         const card = document.createElement('div');
         card.className = 'news-card';
         card.innerHTML = `
-            <img src="${news.imageurl}" alt="${news.title}" class="news-card-image" onerror="this.src='assets/news-placeholder.jpg'">
+            <img src="${news.imageurl}" alt="${news.title}" class="news-card-image" onerror="this.src='../assets/news-placeholder.jpg'">
             <div class="news-card-content">
                 <span class="news-card-category">${getCategoryBadge(news.categories)}</span>
                 <h3 class="news-card-title">${news.title}</h3>

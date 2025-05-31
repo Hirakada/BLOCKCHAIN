@@ -39,9 +39,9 @@ const researchData = {
                 <button class="pdf-btn" id="prev-page">Previous</button>
                 <span class="page-info">Page <span id="page-num">1</span> of <span id="page-count">6</span></span>
                 <button class="pdf-btn" id="next-page">Next</button>
-                <a href="assets/MelekFinance Research-1.pdf" download class="pdf-btn download-btn">Download PDF</a>
+                <a href="../assets/MelekFinance Research-1.pdf" download class="pdf-btn download-btn">Download PDF</a>
             </div>
-            <iframe src="assets/MelekFinance Research-1.pdf" class="pdf-embed" id="pdf-embed"></iframe>
+            <iframe src="../assets/MelekFinance Research-1.pdf" class="pdf-embed" id="pdf-embed"></iframe>
         </div>`
     },
     "stablecoin-volatility": {
@@ -69,9 +69,9 @@ const researchData = {
                 <button class="pdf-btn" id="prev-page">Previous</button>
                 <span class="page-info">Page <span id="page-num">1</span> of <span id="page-count">6</span></span>
                 <button class="pdf-btn" id="next-page">Next</button>
-                <a href="assets/free-research.pdf" download class="pdf-btn download-btn">Download PDF</a>
+                <a href="../assets/free-research.pdf" download class="pdf-btn download-btn">Download PDF</a>
             </div>
-            <iframe src="assets/free-research.pdf" class="pdf-embed" id="pdf-embed"></iframe>
+            <iframe src="../assets/free-research.pdf" class="pdf-embed" id="pdf-embed"></iframe>
         </div>`
     },
     "market-overview": {
@@ -85,9 +85,9 @@ const researchData = {
                 <button class="pdf-btn" id="prev-page">Previous</button>
                 <span class="page-info">Page <span id="page-num">1</span> of <span id="page-count">6</span></span>
                 <button class="pdf-btn" id="next-page">Next</button>
-                <a href="assets/free-overview.pdf" download class="pdf-btn download-btn">Download PDF</a>
+                <a href="../assets/free-overview.pdf" download class="pdf-btn download-btn">Download PDF</a>
             </div>
-            <iframe src="assets/free-overview.pdf" class="pdf-embed" id="pdf-embed"></iframe>
+            <iframe src="../assets/free-overview.pdf" class="pdf-embed" id="pdf-embed"></iframe>
         </div>`
     },
     "advanced-trading": {
@@ -102,9 +102,9 @@ const researchData = {
                 <button class="pdf-btn" id="prev-page">Previous</button>
                 <span class="page-info">Page <span id="page-num">1</span> of <span id="page-count">6</span></span>
                 <button class="pdf-btn" id="next-page">Next</button>
-                <a href="assets/Trading-Strategy.pdf" download class="pdf-btn download-btn">Download PDF</a>
+                <a href="../assets/Trading-Strategy.pdf" download class="pdf-btn download-btn">Download PDF</a>
             </div>
-            <iframe src="assets/Trading-Strategy.pdf" class="pdf-embed" id="pdf-embed"></iframe>
+            <iframe src="../assets/Trading-Strategy.pdf" class="pdf-embed" id="pdf-embed"></iframe>
         </div>`
     },
     "institutional-investment": {
@@ -119,9 +119,9 @@ const researchData = {
                 <button class="pdf-btn" id="prev-page">Previous</button>
                 <span class="page-info">Page <span id="page-num">1</span> of <span id="page-count">6</span></span>
                 <button class="pdf-btn" id="next-page">Next</button>
-                <a href="assets/SMC-Strategy.pdf" download class="pdf-btn download-btn">Download PDF</a>
+                <a href="../assets/SMC-Strategy.pdf" download class="pdf-btn download-btn">Download PDF</a>
             </div>
-            <iframe src="assets/SMC-Strategy.pdf" class="pdf-embed" id="pdf-embed"></iframe>
+            <iframe src="../assets/SMC-Strategy.pdf" class="pdf-embed" id="pdf-embed"></iframe>
         </div>`
     }
 };
@@ -198,7 +198,7 @@ function setupPdfNavigation() {
             
             // Create a new embed element with the updated page parameter
             const newPdfEmbed = document.createElement('embed');
-            newPdfEmbed.src = `/assets/MelekFinance-Research-1.pdf#page=${currentPage}`;
+            newPdfEmbed.src = `./assets/MelekFinance-Research-1.pdf#page=${currentPage}`;
             newPdfEmbed.type = "application/pdf";
             newPdfEmbed.className = "pdf-embed";
             newPdfEmbed.id = "pdf-embed";
@@ -292,7 +292,7 @@ function populateResearchGrid() {
                     <div class="meta">
                         <span>${item.date}</span>
                     </div>
-                    <a href="../researchDetail.html?id=${item.id}" class="card-btn">Read More</a>
+                    <a href="researchDetail.html?id=${item.id}" class="card-btn">Read More</a>
                 `;
                 grid.appendChild(card);
             });
