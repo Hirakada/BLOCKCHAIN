@@ -1,7 +1,6 @@
 import * as AuthModule from "../db.js";
 import { loadLoader, showLoader, hideLoader } from "../assets/component/loader.js";
 import { trace } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-performance.js";
-import { loadLoader  } from "../assets/component/loader.js";
 
 (async () => {
   await loadLoader();
