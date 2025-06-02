@@ -7,7 +7,7 @@ export async function loadLoader() {
   }
 
   try {
-    const response = await fetch("assets/component/loader.html");
+    const response = await fetch("../assets/component/loader.html");
     const html = await response.text();
     container.innerHTML = html;
   } catch (error) {
