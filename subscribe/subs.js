@@ -1,11 +1,17 @@
 import * as AuthModule from "../db.js";
 import { loadLoader, showLoader, hideLoader } from "../assets/component/loader.js";
 import { trace } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-performance.js";
+import { loadLoader  } from "../assets/component/loader.js";
+
+(async () => {
+  await loadLoader();
+})();
 
 const {
     app,
     db,
     auth,
+    perf,
     collection,
     doc,
     setDoc,
@@ -16,7 +22,7 @@ const {
     where,
     getAuth,
     createUserWithEmailAndPassword,
-    deleteUse
+    deleteUser
 } = AuthModule;
 
 console.log(app);
@@ -26,8 +32,6 @@ console.log(db);
 
 // Logika pemilihan paket untuk form harga dan berlangganan
 document.addEventListener('DOMContentLoaded', function () {
-    loadLoader();
-
     const pricingGrid = document.getElementById('pricing-grid');
     const pricingCards = document.querySelectorAll('.pricing-card');
     const selectPlanButtons = document.querySelectorAll('.select-plan-btn');
