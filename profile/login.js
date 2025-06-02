@@ -1,5 +1,5 @@
 import * as AuthModule from "../db.js";
-import { loadLoader, showLoader, hideLoader } from "../assets/component/loader.js";
+import { showLoader, hideLoader } from "../assets/component/loader.js";
 import { trace } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-performance.js";
 
 const {
@@ -98,8 +98,6 @@ async function getUserDataWithPayments(docId) {
   fetchTrace.start();
 
   try {
-    await delay(5000);
-
     const userDocRef = doc(db, "users", docId);
     const userDocSnap = await getDoc(userDocRef);
 

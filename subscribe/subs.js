@@ -1,5 +1,6 @@
-import { showLoader, hideLoader } from "../assets/component/loader.js";
 import * as AuthModule from "../db.js";
+import { loadLoader, showLoader, hideLoader } from "../assets/component/loader.js";
+import { trace } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-performance.js";
 
 const {
     app,
@@ -15,7 +16,7 @@ const {
     where,
     getAuth,
     createUserWithEmailAndPassword,
-    deleteUser
+    deleteUse
 } = AuthModule;
 
 console.log(app);
@@ -25,6 +26,8 @@ console.log(db);
 
 // Logika pemilihan paket untuk form harga dan berlangganan
 document.addEventListener('DOMContentLoaded', function () {
+    loadLoader();
+
     const pricingGrid = document.getElementById('pricing-grid');
     const pricingCards = document.querySelectorAll('.pricing-card');
     const selectPlanButtons = document.querySelectorAll('.select-plan-btn');
@@ -241,6 +244,8 @@ document.addEventListener('DOMContentLoaded', function () {
     //Save data ke Firebase
     async function saveData() {
         showLoader();
+        const subscribeTrace = trace(perf, "subscribeTime");
+        subscribeTrace.start();
 
         console.log("saveData function called");
         console.log("Current form values:", {
@@ -282,10 +287,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 virtualAccount: paymentVaNumber.textContent,
                 paidAt: startDate,
                 status: "Paid"
-            });            
+            });     
+            
+            hideLoader;
+            setTimeout(() => {
+                alert("✅ Saved to Firebase!");
+            }, 100);
 
-            alert("✅ Saved to Firebase!");
         } catch (err) {
+            hideLoader;
+
             console.error("❌ Error saat createUser atau setDoc:", err);
 
             // Cek kalau user sudah ter-assign baru hapus
@@ -299,8 +310,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             alert("Gagal registrasi: " + err.message);
-        } finally {
-            hideLoader();
         }
     }
 
