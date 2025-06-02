@@ -1,9 +1,11 @@
 import * as AuthModule from "../db.js";
+import { loadLoader, showLoader, hideLoader } from "../assets/component/loader.js";
+import { trace } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-performance.js";
 
 const {
-  app,
   db,
   auth,
+  perf,
   collection,
   doc,
   getDocs,
@@ -11,6 +13,7 @@ const {
   signInWithEmailAndPassword
 } = AuthModule;
 
+//Menampilkan login popup
 export async function loadLoginPopup(triggerButtonId = "login-btn") {
   let container = document.getElementById("login-container");
   if (!container) {
@@ -50,24 +53,33 @@ export async function loadLoginPopup(triggerButtonId = "login-btn") {
         event.preventDefault();
         loginError.style.display = "none";
 
+        const signInTrace = trace(perf, "signInTime");
+        showLoader();
+        signInTrace.start();
+
         const email = loginForm.email.value.trim();
         const password = loginForm.password.value;
 
         try {
           await signInWithEmailAndPassword(auth, email, password);
+          signInTrace.stop();
+
           const docId = email.replace(/[^a-zA-Z0-9]/g, '_');
 
           loginPopup.style.display = "none";
 
-          alert("Login berhasil!");
-
           await getUserDataWithPayments(docId);
+          hideLoader();
+          setTimeout(() => {
+            alert("Login berhasil!");
+          }, 100);
         } catch (err) {
+          hideLoader();
           console.error("Login gagal:", err);
           loginError.textContent = "Email atau password salah.";
           loginError.style.display = "block";
         }
-      }, { once: true });
+      });
     }
 
   } catch (error) {
@@ -75,8 +87,19 @@ export async function loadLoginPopup(triggerButtonId = "login-btn") {
   }
 }
 
+//Simulasi delay untuk cek loading
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//Memanggil data user dari Firebase
 async function getUserDataWithPayments(docId) {
+  const fetchTrace = trace(perf, "fetchUserDataTime");
+  fetchTrace.start();
+
   try {
+    await delay(5000);
+
     const userDocRef = doc(db, "users", docId);
     const userDocSnap = await getDoc(userDocRef);
 
@@ -102,9 +125,10 @@ async function getUserDataWithPayments(docId) {
     });
 
     console.log("Payments:", payments);
-
     return { userData, payments };
   } catch (error) {
     console.error("Error getting user data and payments:", error);
+  } finally {
+    fetchTrace.stop();
   }
 }

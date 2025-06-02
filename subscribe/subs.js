@@ -1,3 +1,4 @@
+import { showLoader, hideLoader } from "../assets/component/loader.js";
 import * as AuthModule from "../db.js";
 
 const {
@@ -239,6 +240,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Save data ke Firebase
     async function saveData() {
+        showLoader();
+
         console.log("saveData function called");
         console.log("Current form values:", {
             fullName: fullNameInput.value,
@@ -296,6 +299,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             alert("Gagal registrasi: " + err.message);
+        } finally {
+            hideLoader();
         }
     }
 

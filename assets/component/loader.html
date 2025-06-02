@@ -1,0 +1,109 @@
+<div id="loaderOverlay" class="hidden">
+    <div class="loader-wrapper">
+        <div class="chain-block"></div>
+        <div class="chain-block"></div>
+        <div class="chain-block"></div>
+        <div class="chain-block"></div>
+        <div class="chain-block"></div>
+    </div>
+</div>
+
+<style>
+    #loaderOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: auto;
+    }
+
+    #loaderOverlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .loader-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 800px;
+        height: 100px;
+        gap: 8px;
+    }
+
+    .chain-block {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+        border: 1px solid rgba(211, 211, 211, 0.3);
+        background: linear-gradient(135deg,
+                    #ffffff 0%,
+                    #f0f0f0 50%,
+                    #e0e0e0 100%);
+        box-shadow:
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(211, 211, 211, 0.5),
+            0 0 30px rgba(211, 211, 211, 0.2);
+        animation: chain-movement 2s infinite ease-in-out;
+        transform-style: preserve-3d;
+        position: relative;
+    }
+
+    .chain-block::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        height: 80%;
+        border-radius: 4px;
+        border: 1px solid rgba(211, 211, 211, 0.3);
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: translate(-50%, -50%) rotateY(20deg) rotateX(10deg);
+    }
+
+    .chain-block:nth-child(1) { animation-delay: 0s; }
+    .chain-block:nth-child(2) { animation-delay: 0.2s; }
+    .chain-block:nth-child(3) { animation-delay: 0.4s; }
+    .chain-block:nth-child(4) { animation-delay: 0.6s; }
+    .chain-block:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes chain-movement {
+        0%, 100% {
+            transform: translateY(0) rotateY(0deg);
+            opacity: 0.8;
+        }
+        25% {
+            transform: translateY(-15px) rotateY(15deg);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(0) rotateY(0deg);
+            opacity: 0.8;
+        }
+        75% {
+            transform: translateY(15px) rotateY(-15deg);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .chain-block {
+            width: 25px;
+            height: 25px;
+            border-radius: 5px;
+        }
+        .loader-wrapper {
+            gap: 6px;
+        }
+    }
+</style>
