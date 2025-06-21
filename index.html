@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./home/home.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23150c28' d='M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24z'/%3E%3Cpath fill='lightgray' d='M5.631 3.676L12.001 0l6.367 3.676l-2.34 1.358L12 2.716L7.972 5.034l-2.34-1.358Zm12.737 4.636l-2.34-1.358L12 9.272L7.972 6.954l-2.34 1.358v2.716l4.026 2.318v4.636L12 19.341l2.341-1.359v-4.636l4.027-2.318zm0 7.352v-2.716l-2.34 1.358v2.716zm1.663.96l-4.027 2.318v2.717l6.368-3.677V10.63l-2.34 1.358v4.636Zm-2.34-10.63l2.34 1.358v2.716l2.341-1.358V5.994l-2.34-1.358zM9.657 19.926v2.716L12 24l2.341-1.358v-2.716l-2.34 1.358l-2.343-1.358ZM5.63 15.664l2.341 1.358v-2.716l-2.34-1.358v2.716Zm4.027-9.67L12 7.352l2.341-1.358l-2.34-1.358l-2.343 1.358Zm-5.69 1.358L6.31 5.994L3.968 4.636l-2.34 1.358V8.71l2.34 1.358zm0 4.636l-2.34-1.358v7.352l6.368 3.677v-2.717l-4.028-2.318z'/%3E%3C/svg%3E"
+        type="image/svg+xml" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="simple-icons--bnbchain"></span>
+                <h1>BlockChain</h1>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <div class="nav-links">
+                <a href="/">HOME</a>
+                <a href="./news/news.html">NEWS</a>
+                <a href="./market/market.html">MARKETS</a>
+                <a href="./chart/chart.html">CHARTS</a>
+                <a href="./about/about.html">ABOUT</a>
+            </div>
+            <div class="acc-links">
+                <button id="login-btn" class="login-btn">LOGIN</button>
+                <a href="./subscribe/subs.html" class="register">SUBSCRIBE</a>
+            </div>
+        </nav>
+    </header>
+    <div class="nav-overlay"></div> 
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Powering Decentralized Innovation</h1>
+                    <p>
+                        Discover the potential of blockchain technology with our platform.
+                        Secure, transparent, and innovative solutions for the future of
+                        digital transactions.
+                    </p>
+                    <div class="hero-cta">
+                        <div class="btn-container">
+                            <div class="hero-btn-1">
+                                <span class="hugeicons--market-analysis"></span>
+                                <a href="./market/market.html">EXPLORE MARKETS</a>
+                            </div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="hero-btn-2">
+                                <span class="logos--bitcoin"></span>
+                                <a href="./bitcoin/whitepaper.html">READ WHITEPAPER</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="./assets/BTC CHART.png" alt="Bitcoin Chart" />
+                </div>
+            </div>
+        </section>
+        <section class="ticker">
+            <div class="ticker-container">
+                <div class="ticker-scroll-container">
+                    <div class="ticker-scroll" id="crypto-ticker">
+                        <div class="ticker-loading">Loading latest prices...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="features">
+            <div class="section-header">
+                <h2>Why Choose Our Blockchain Platform</h2>
+                <p>
+                    Experience the future of decentralized technology with our
+                    innovative solutions
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="icon security-icon"></span>
+                    <h3>Advanced Security</h3>
+                    <p>
+                        State-of-the-art cryptographic protocols ensuring maximum
+                        protection for your assets
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon speed-icon"></span>
+                    <h3>Lightning Speed</h3>
+                    <p>
+                        High-performance network with minimal transaction times and low
+                        fees
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon transparency-icon"></span>
+                    <h3>Full Transparency</h3>
+                    <p>
+                        Complete visibility into all transactions with our immutable
+                        ledger technology
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon scalability-icon"></span>
+                    <h3>Infinite Scalability</h3>
+                    <p>
+                        Built to grow with increasing demand while maintaining optimal
+                        performance
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="chart-preview">
+            <div class="section-header">
+                <h2>Live Market Charts</h2>
+                <p>Real-time visualization of leading cryptocurrencies</p>
+            </div>
+            <div class="charts-container">
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <span class="crypto-icon btc-icon"></span>
+                            <h3>Bitcoin</h3>
+                            <span class="price-display" id="btc-price">Loading...</span>
+                        </div>
+                        <div class="timeframe-selector" data-chart="btc">
+                            <button class="timeframe-btn active" data-period="1d">
+                                1D
+                            </button>
+                            <button class="timeframe-btn" data-period="1w">1W</button>
+                            <button class="timeframe-btn" data-period="1m">1M</button>
+                            <button class="timeframe-btn" data-period="1y">1Y</button>
+                        </div>
+                    </div>
+                    <div class="chart-canvas-container">
+                        <canvas id="btc-chart"></canvas>
+                        <div class="chart-loader" id="btc-loader">
+                            <div class="loader-spinner"></div>
+                        </div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="last-updated" id="btc-updated">Last updated: --</span>
+                        <span class="data-source">Live data from CoinGecko</span>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                            <span class="crypto-icon eth-icon"></span>
+                            <h3>Ethereum</h3>
+                            <span class="price-display" id="eth-price">Loading...</span>
+                        </div>
+                        <div class="timeframe-selector" data-chart="eth">
+                            <button class="timeframe-btn active" data-period="1d">
+                                1D
+                            </button>
+                            <button class="timeframe-btn" data-period="1w">1W</button>
+                            <button class="timeframe-btn" data-period="1m">1M</button>
+                            <button class="timeframe-btn" data-period="1y">1Y</button>
+                        </div>
+                    </div>
+                    <div class="chart-canvas-container">
+                        <canvas id="eth-chart"></canvas>
+                        <div class="chart-loader" id="eth-loader">
+                            <div class="loader-spinner"></div>
+                        </div>
+                    </div>
+                    <div class="chart-footer">
+                        <span class="last-updated" id="eth-updated">Last updated: --</span>
+                        <span class="data-source">Live data from CoinGecko</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="featured-news">
+            <div class="news-container">
+                <div class="news-desc">
+                    <h3>Whale Alert</h3>
+                    <div class="alert-desc">
+                        <div id="whale-alert-container">
+                            Loading latest whale transactions...
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <div class="news-btn-1">
+                            <span class="material-symbols-light--news-outline"></span>
+                            <a href="../market/market.html">READ MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-side">
+                    <h3>Latest News</h3>
+                    <div id="crypto-news-container" class="crypto-news-container">
+                        <div class="news-loading">Loading latest crypto news...</div>
+                    </div>
+                    <div class="btn-container">
+                        <div class="news-btn-1">
+                            <span class="material-symbols-light--news-outline"></span>
+                            <a href="../news/news.html">MORE NEWS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="research-preview">
+            <div class="section-header">
+                <h2>Latest Research Insights</h2>
+                <p>Explore our in-depth analysis and research on blockchain technology</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-image">
+                        <img src="./assets/research-img-1.jpg" alt="Basic Blockchain Research">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Internal Research</span>
+                        <h3>Pemahaman Dasar Blockchain</h3>
+                        <p>Pengenalan konsep blockchain dan aplikasinya pada mata uang kripto.</p>
+                        <div class="research-meta">
+                            <span class="research-date">Des 29, 2024</span>
+                            <span class="research-author">MelekFinance Research</span>
+                        </div>
+                        <a href="../research/research.html?id=basic-blockchain" class="read-more">Read Research</a>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-image">
+                        <img src="./assets/research-img-3.jpg" alt="Getting Started Research">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Free Research</span>
+                        <h3>Pengenalan Dasar Cryptocurrency</h3>
+                        <p>A beginner's guide to understanding cryptocurrency and blockchain technology.</p>
+                        <div class="research-meta">
+                            <span class="research-date">May 21, 2025</span>
+                            <span class="research-author">MelekFinance Research</span>
+                        </div>
+                        <a href="../research/research.html?id=getting-started-crypto" class="read-more">Read Research</a>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-image">
+                        <img src="./assets/research-img-5.jpg" alt="Advanced Trading">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Premium Research</span>
+                        <h3>Advanced Trading Strategies</h3>
+                        <p>Exclusive insights into advanced trading techniques and market analysis.</p>
+                        <div class="research-meta">
+                            <span class="research-date">March 13, 2024</span>
+                            <span class="research-author">MelekFinance Research</span>
+                        </div>
+                        <a href="../research/research.html?id=advanced-trading" class="read-more">Read Research</a>
+                    </div>
+                </div>
+            </div>
+            <div class="research-cta">
+                <a href="../research/research.html" class="view-all-research">
+                    <span class="research-icon"></span>
+                    View All Research
+                </a>
+            </div>
+        </section>
+        <section class="newsletter-cta">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h2>Stay Ahead of the Crypto Market</h2>
+                    <p>Get breaking blockchain news, exclusive market insights, and expert analysis delivered directly to your inbox. Our subscribers learn about major moves before they happen.</p>
+                    
+                    <div class="newsletter-benefits">
+                        <div class="benefit-item">
+                            <span class="benefit-icon breaking-news-icon"></span>
+                            <p>Breaking news alerts</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon market-analysis-icon"></span>
+                            <p>Weekly market analysis</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon whale-movement-icon"></span>
+                            <p>Major whale movements</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon trends-icon"></span>
+                            <p>Emerging trends</p>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter-form">
+                        <form id="subscribe-form">
+                            <div class="form-inputs">
+                                <input type="email" placeholder="Your email address" required>
+                                <select>
+                                    <option value="daily">Daily Updates</option>
+                                    <option value="weekly">Weekly Digest</option>
+                                    <option value="breaking">Breaking News Only</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="subscribe-btn">
+                                <span class="notification-icon"></span>
+                                SUBSCRIBE NOW
+                            </button>
+                        </form>
+                        <p class="privacy-note">We respect your privacy. Unsubscribe anytime.</p>
+                    </div>
+                </div>
+                
+                <div class="newsletter-testimonials">
+                    <h3>What Our Subscribers Say</h3>
+                    <div class="testimonial-slider">
+                        <div class="testimonials-container">
+                            <div class="testimonial active" data-index="0">
+                                <p>"The market alerts helped me make informed decisions during the last bull run. Invaluable resource for any serious crypto investor."</p>
+                                <div class="testimonial-author">
+                                    <span class="author-avatar"></span>
+                                    <div class="author-info">
+                                        <span class="author-name">Timothy R.</span>
+                                        <span class="author-title">Crypto Trader</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial" data-index="1">
+                                <p>"Their weekly analysis has consistently predicted major market movements. I've been able to prepare my portfolio ahead of time."</p>
+                                <div class="testimonial-author">
+                                    <span class="author-avatar"></span>
+                                    <div class="author-info">
+                                        <span class="author-name">Gabriel R.</span>
+                                        <span class="author-title">Investment Advisor</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial" data-index="2">
+                                <p>"The whale alerts alone are worth the subscription. Being notified of major movements has transformed my trading strategy."</p>
+                                <div class="testimonial-author">
+                                    <span class="author-avatar"></span>
+                                    <div class="author-info">
+                                        <span class="author-name">Steven W.</span>
+                                        <span class="author-title">Blockchain Developer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-controls">
+                            <span class="slider-dot active" data-index="0"></span>
+                            <span class="slider-dot" data-index="1"></span>
+                            <span class="slider-dot" data-index="2"></span>
+                        </div>
+                    </div>
+                    <div class="subscriber-stats">
+                        <div class="stat">
+                            <span class="stat-number">45K+</span>
+                            <span class="stat-label">Subscribers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">94%</span>
+                            <span class="stat-label">Open Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>     
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="simple-icons--bnbchain"></span>
+                    <h2>BlockChain</h2>
+                    <p>Powering the future of decentralized innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Markets</a></li>
+                            <li><a href="#">Charts</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Whitepaper</a></li>
+                            <li><a href="#">Research</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">Developers</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe for the latest updates</p>
+                    <div class="footer-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon twitter"></a>
+                        <a href="#" class="social-icon discord"></a>
+                        <a href="#" class="social-icon telegram"></a>
+                        <a href="#" class="social-icon github"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 BlockChain. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Legal</a>
+                </div>
+                <div class="disclaimer">
+                    <p>Cryptocurrency trading involves risk. Please do your own research before making any investment decisions.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./home/home.js"></script>
+    <script src="scroll.js"></script>
+    <script src="nav.js"></script>
+    <script type="module" src="auth.js"></script>
+    
+</body>
+
+</html>

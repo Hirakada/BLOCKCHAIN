@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart</title>
+    <link rel="stylesheet" href="chart.css">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23150c28' d='M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24z'/%3E%3Cpath fill='lightgray' d='M5.631 3.676L12.001 0l6.367 3.676l-2.34 1.358L12 2.716L7.972 5.034l-2.34-1.358Zm12.737 4.636l-2.34-1.358L12 9.272L7.972 6.954l-2.34 1.358v2.716l4.026 2.318v4.636L12 19.341l2.341-1.359v-4.636l4.027-2.318zm0 7.352v-2.716l-2.34 1.358v2.716zm1.663.96l-4.027 2.318v2.717l6.368-3.677V10.63l-2.34 1.358v4.636Zm-2.34-10.63l2.34 1.358v2.716l2.341-1.358V5.994l-2.34-1.358zM9.657 19.926v2.716L12 24l2.341-1.358v-2.716l-2.34 1.358l-2.343-1.358ZM5.63 15.664l2.341 1.358v-2.716l-2.34-1.358v2.716Zm4.027-9.67L12 7.352l2.341-1.358l-2.34-1.358l-2.343 1.358Zm-5.69 1.358L6.31 5.994L3.968 4.636l-2.34 1.358V8.71l2.34 1.358zm0 4.636l-2.34-1.358v7.352l6.368 3.677v-2.717l-4.028-2.318z'/%3E%3C/svg%3E"
+        type="image/svg+xml" />
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="simple-icons--bnbchain"></span>
+                <h1>BlockChain</h1>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <div class="nav-links">
+                <a href="../">HOME</a>
+                <a href="../news/news.html">NEWS</a>
+                <a href="../market/market.html">MARKETS</a>
+                <a href="chart.html">CHARTS</a>
+                <a href="../about/about.html">ABOUT</a>
+            </div>
+            <div class="acc-links">
+                <a href="../subscribe/subs.html" class="register">SUBSCRIBE</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="chart-hero">
+            <h1>Interactive Price Charts</h1>
+            <p>Analyze price movements, trends and market data</p>
+        </section>
+        <section class="chart-container">
+            <div class="chart-sidebar">
+                <div class="coin-selector">
+                    <h3>Top Cryptocurrencies</h3>
+                    <ul class="coin-list">
+                        <li data-symbol="BTCUSD" class="active">
+                            <div class="coin-icon btc"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Bitcoin</span>
+                                <span class="coin-symbol">BTC</span>
+                            </div>
+                        </li>
+                        <li data-symbol="ETHUSD">
+                            <div class="coin-icon eth"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Ethereum</span>
+                                <span class="coin-symbol">ETH</span>
+                            </div>
+                        </li>
+                        <li data-symbol="BNBUSD">
+                            <div class="coin-icon bnb"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">BNB</span>
+                                <span class="coin-symbol">BNB</span>
+                            </div>
+                        </li>
+                        <li data-symbol="SOLUSD">
+                            <div class="coin-icon sol"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Solana</span>
+                                <span class="coin-symbol">SOL</span>
+                            </div>
+                        </li>
+                        <li data-symbol="XRPUSD">
+                            <div class="coin-icon xrp"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">XRP</span>
+                                <span class="coin-symbol">XRP</span>
+                            </div>
+                        </li>
+                        <li data-symbol="ADAUSD">
+                            <div class="coin-icon ada"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Cardano</span>
+                                <span class="coin-symbol">ADA</span>
+                            </div>
+                        </li>
+                        <li data-symbol="DOGEUSD">
+                            <div class="coin-icon doge"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Dogecoin</span>
+                                <span class="coin-symbol">DOGE</span>
+                            </div>
+                        </li>
+                        <li data-symbol="DOTUSD">
+                            <div class="coin-icon dot"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Polkadot</span>
+                                <span class="coin-symbol">DOT</span>
+                            </div>
+                        </li>
+                        <li data-symbol="AVAXUSD">
+                            <div class="coin-icon avax"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Avalanche</span>
+                                <span class="coin-symbol">AVAX</span>
+                            </div>
+                        </li>
+                        <li data-symbol="SHIBUSD">
+                            <div class="coin-icon shib"></div>
+                            <div class="coin-info">
+                                <span class="coin-name">Shiba Inu</span>
+                                <span class="coin-symbol">SHIB</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chart-main">
+                <div class="coin-info-header">
+                    <div class="current-coin">
+                        <div class="coin-icon btc large"></div>
+                        <h2 id="selected-coin">Bitcoin (BTC)</h2>
+                    </div>
+                    <div class="coin-stats-row">
+                        <div class="stat-item">
+                            <span class="stat-label">Price</span>
+                            <span class="stat-value" id="current-price"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">24h Change</span>
+                            <span class="stat-value positive" id="price-change"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">24h High</span>
+                            <span class="stat-value" id="day-high"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">24h Low</span>
+                            <span class="stat-value" id="day-low"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Market Cap</span>
+                            <span class="stat-value" id="market-cap"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Volume (24h)</span>
+                            <span class="stat-value" id="volume"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-header">
+                    <div class="chart-view-selector">
+                        <div class="chart-type-toggle">
+                            <button class="chart-type-option" data-chart-type="simple">Simple</button>
+                            <button class="chart-type-option active" data-chart-type="advanced">TradingView</button>
+                        </div>
+                    </div>
+                    <div class="timeframe-selector">
+                        <button class="timeframe-btn" data-interval="15">15m</button>
+                        <button class="timeframe-btn" data-interval="60">1h</button>
+                        <button class="timeframe-btn active" data-interval="D">1d</button>
+                        <button class="timeframe-btn" data-interval="W">1w</button>
+                        <button class="timeframe-btn" data-interval="M">1m</button>
+                    </div>
+                </div>
+                <div id="tradingview-chart"></div>
+                <div id="canvas-chart-container">
+                    <canvas id="canvas-chart"></canvas>
+                </div>
+                <div class="chart-footer">
+                    <span class="last-updated">Last updated: <span id="last-updated">May 16, 2025 12:30 PM</span></span>
+                    <span class="data-source">Live data powered by BlockChain</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="simple-icons--bnbchain"></span>
+                    <h2>BlockChain</h2>
+                    <p>Powering the future of decentralized innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Markets</a></li>
+                            <li><a href="#">Charts</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Whitepaper</a></li>
+                            <li><a href="#">Research</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">Developers</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe for the latest updates</p>
+                    <div class="footer-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon twitter"></a>
+                        <a href="#" class="social-icon discord"></a>
+                        <a href="#" class="social-icon telegram"></a>
+                        <a href="#" class="social-icon github"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 BlockChain. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Legal</a>
+                </div>
+                <div class="disclaimer">
+                    <p>Cryptocurrency trading involves risk. Please do your own research before making any investment
+                        decisions.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="chart.js"></script>
+    <script src="../scroll.js"></script>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script src="../nav.js"></script>
+</body>
+
+</html>

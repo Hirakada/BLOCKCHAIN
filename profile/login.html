@@ -1,0 +1,129 @@
+<section id="login-popup" class="login-popup" style="display: none;">
+    <div class="login-container">
+    <span id="close-login" class="close">&times;</span>
+    <h2>Login</h2>
+    <form id="login-form">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="email@example.com" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="6 Symbol Alphanumeric Character" required />
+
+        <button type="submit">Masuk</button>
+        <p id="login-error" style="color: red; display: none;"></p>
+    </form>
+    </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Geist', 'geist-mono';
+}
+
+    .login-popup {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+    }
+    .login-container {
+        background: linear-gradient(135deg, #181818 0%, #232323 100%);
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+        border-radius: 18px;
+        border: 1.5px solid #222;
+        padding: 2.8rem 2.5rem 2.2rem 2.5rem;
+        width: 360px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Geist', 'geist-mono', Arial, sans-serif;
+        transition: box-shadow 0.3s;
+    }
+    .login-container h2 {
+        margin-bottom: 1.4rem;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        font-size: 2rem;
+    }
+    .login-container label {
+        align-self: flex-start;
+        margin-bottom: 0.25rem;
+        color: #e0e0e0;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    .login-container input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1.5px solid #444;
+        border-radius: 9px;
+        font-size: 1rem;
+        background: #232323;
+        color: #fff;
+        font-family: 'Geist', 'geist-mono', Arial, sans-serif;
+        transition: border 0.2s, background 0.2s;
+    }
+    .login-container input:focus {
+        border: 1.5px solid #fff;
+        outline: none;
+        background: #181818;
+    }
+    .login-container button {
+        width: 100%;
+        padding: 13px;
+        background: linear-gradient(90deg, #fff 0%, #e0e0e0 100%);
+        color: #181818;
+        border: none;
+        border-radius: 9px;
+        font-size: 1.08rem;
+        font-weight: 600;
+        font-family: 'Geist', 'geist-mono', Arial, sans-serif;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        margin-top: 8px;
+    }
+    .login-container button:hover {
+        background: linear-gradient(90deg, #e0e0e0 0%, #fff 100%);
+        color: #000;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+    .close {
+        position: absolute;
+        right: 18px;
+        top: 12px;
+        font-size: 26px;
+        font-weight: bold;
+        color: #bbb;
+        cursor: pointer;
+        transition: color 0.2s, transform 0.2s;
+        background: none;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .close:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+        transform: scale(1.1);
+    }
+</style>

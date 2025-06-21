@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market</title>
+    <link rel="stylesheet" href="market.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23150c28' d='M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24z'/%3E%3Cpath fill='lightgray' d='M5.631 3.676L12.001 0l6.367 3.676l-2.34 1.358L12 2.716L7.972 5.034l-2.34-1.358Zm12.737 4.636l-2.34-1.358L12 9.272L7.972 6.954l-2.34 1.358v2.716l4.026 2.318v4.636L12 19.341l2.341-1.359v-4.636l4.027-2.318zm0 7.352v-2.716l-2.34 1.358v2.716zm1.663.96l-4.027 2.318v2.717l6.368-3.677V10.63l-2.34 1.358v4.636Zm-2.34-10.63l2.34 1.358v2.716l2.341-1.358V5.994l-2.34-1.358zM9.657 19.926v2.716L12 24l2.341-1.358v-2.716l-2.34 1.358l-2.343-1.358ZM5.63 15.664l2.341 1.358v-2.716l-2.34-1.358v2.716Zm4.027-9.67L12 7.352l2.341-1.358l-2.34-1.358l-2.343 1.358Zm-5.69 1.358L6.31 5.994L3.968 4.636l-2.34 1.358V8.71l2.34 1.358zm0 4.636l-2.34-1.358v7.352l6.368 3.677v-2.717l-4.028-2.318z'/%3E%3C/svg%3E"
+        type="image/svg+xml" />
+        <link rel="stylesheet" href="market.css" >
+        <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="simple-icons--bnbchain"></span>
+                <h1>BlockChain</h1>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <div class="nav-links">
+                <a href="../">HOME</a>
+                <a href="../news/news.html">NEWS</a>
+                <a href="market.html">MARKETS</a>
+                <a href="../chart/chart.html">CHARTS</a>
+                <a href="../about/about.html">ABOUT</a>
+            </div>
+            <div class="acc-links">
+                <a href="../subscribe/subs.html" class="register">SUBSCRIBE</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="chart-hero">
+            <h1>Cryptocurrency Market</h1>
+            <p>Real-time prices, market cap, volume and more for top cryptocurrencies</p>
+        </section>
+        <section id="market-table-section">
+            <div id="market-summary" class="market-summary"></div>
+            <div class="market-content-wrapper">
+                <div class="main-column">
+                    <div id="market-table-container" class="market-table-container"></div>
+                    
+                    <div class="exchanges-section">
+                        <div class="section-header">
+                            <h2>Top Crypto Exchanges</h2>
+                            <div class="header-note">Based on volume, security, and liquidity</div>
+                        </div>
+                        <div class="exchanges-grid" id="exchanges-grid">
+                            <div class="exchange-card-loading">Loading exchange data...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="side-column">
+                    <div id="whale-alerts-container" class="whale-alerts-container">
+                        <div class="whale-alerts-header">
+                            <h2>Whale Alerts</h2>
+                            <div class="whale-alerts-refresh">
+                                <button id="refresh-whale-alerts" class="refresh-button" aria-label="Refresh whale alerts">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M23 4v6h-6"></path>
+                                        <path d="M1 20v-6h6"></path>
+                                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"></path>
+                                        <path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="whale-alerts-list" class="whale-alerts-list">
+                            <div class="whale-alert-loading">Loading whale transactions...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="simple-icons--bnbchain"></span>
+                    <h2>BlockChain</h2>
+                    <p>Powering the future of decentralized innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Markets</a></li>
+                            <li><a href="#">Charts</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Whitepaper</a></li>
+                            <li><a href="#">Research</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">Developers</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe for the latest updates</p>
+                    <div class="footer-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon twitter"></a>
+                        <a href="#" class="social-icon discord"></a>
+                        <a href="#" class="social-icon telegram"></a>
+                        <a href="#" class="social-icon github"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 BlockChain. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Legal</a>
+                </div>
+                <div class="disclaimer">
+                    <p>Cryptocurrency trading involves risk. Please do your own research before making any investment decisions.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="market.js"></script>
+    <script src="../scroll.js"></script>
+    <script src="../nav.js"></script>
+</body>
+</html>

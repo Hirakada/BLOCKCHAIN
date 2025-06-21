@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Whitepaper</title>
+    <link rel="stylesheet" href="whitepaper.css">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23150c28' d='M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24z'/%3E%3Cpath fill='lightgray' d='M5.631 3.676L12.001 0l6.367 3.676l-2.34 1.358L12 2.716L7.972 5.034l-2.34-1.358Zm12.737 4.636l-2.34-1.358L12 9.272L7.972 6.954l-2.34 1.358v2.716l4.026 2.318v4.636L12 19.341l2.341-1.359v-4.636l4.027-2.318zm0 7.352v-2.716l-2.34 1.358v2.716zm1.663.96l-4.027 2.318v2.717l6.368-3.677V10.63l-2.34 1.358v4.636Zm-2.34-10.63l2.34 1.358v2.716l2.341-1.358V5.994l-2.34-1.358zM9.657 19.926v2.716L12 24l2.341-1.358v-2.716l-2.34 1.358l-2.343-1.358ZM5.63 15.664l2.341 1.358v-2.716l-2.34-1.358v2.716Zm4.027-9.67L12 7.352l2.341-1.358l-2.34-1.358l-2.343 1.358Zm-5.69 1.358L6.31 5.994L3.968 4.636l-2.34 1.358V8.71l2.34 1.358zm0 4.636l-2.34-1.358v7.352l6.368 3.677v-2.717l-4.028-2.318z'/%3E%3C/svg%3E"
+        type="image/svg+xml" />
+        <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="simple-icons--bnbchain"></span>
+                <h1>BlockChain</h1>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <div class="nav-links">
+                <a href="../">HOME</a>
+                <a href="../news/news.html">NEWS</a>
+                <a href="../market/market.html">MARKETS</a>
+                <a href="../chart/chart.html">CHARTS</a>
+                <a href="../about/about.html">ABOUT</a>
+            </div>
+            <div class="acc-links">
+                <a href ="../subscribe/subs.html" class="register">SUBSCRIBE</a>
+            </div>
+        </nav>
+        <div class="nav-overlay"></div>
+    </header>
+    <main>
+        <section class="whitepaper-container">
+            <h1>Bitcoin: A Peer-to-Peer Electronic Cash System</h1>
+            <div class="pdf-viewer">
+                <div class="pdf-controls">
+                    <button class="pdf-btn" id="prev-page">Previous</button>
+                    <span class="page-info">Page <span id="page-num">1</span> of <span id="page-count">9</span></span>
+                    <button class="pdf-btn" id="next-page">Next</button>
+                    <a href="../assets/bitcoin whitepaper.pdf" download class="pdf-btn download-btn">Download PDF</a>
+                </div>
+                <embed src="../assets/bitcoin whitepaper.pdf" type="application/pdf" class="pdf-embed" id="pdf-embed">
+            </div>
+        </section>
+        
+        <section class="blockchain-explanation">
+            <h2>Cara Kerja Blockchain</h2>
+            <div class="bento-grid bento-modern">
+                <div class="bento-item bento-a">
+                    <h3>Jaringan Terdesentralisasi</h3>
+                    <p>Sistem terdistribusi di mana tidak ada entitas tunggal yang memiliki kendali, membuatnya tahan terhadap sensor dan kegagalan titik tunggal.</p>
+                </div>
+                <div class="bento-item bento-b">
+                    <h3>Blok & Rantai</h3>
+                    <p>Transaksi dikelompokkan menjadi blok, yang terhubung secara kriptografis membentuk rantai data yang tidak dapat diubah.</p>
+                </div>
+                <div class="bento-item bento-c">
+                    <h3>Mekanisme Konsensus</h3>
+                    <p>Peserta jaringan menyepakati keadaan blockchain melalui proof-of-work, memastikan keamanan dan kepercayaan.</p>
+                </div>
+                <div class="bento-item bento-d">
+                    <h3>Keamanan Kriptografis</h3>
+                    <p>Kriptografi tingkat lanjut melindungi transaksi dan memastikan integritas seluruh jaringan blockchain.</p>
+                </div>
+                <div class="bento-item bento-e">
+                    <h3>Kontrak Pintar</h3>
+                    <p>Kontrak yang mengeksekusi sendiri dengan ketentuan yang ditulis langsung ke dalam kode, memungkinkan perjanjian otomatis dan tanpa kepercayaan.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bitcoin-significance">
+            <h2>Why Bitcoin is Bigger Than You Think</h2>
+            <div class="bento-grid">
+                <div class="bento-item">
+                    <h3>Digital Gold</h3>
+                    <p>Bitcoin has emerged as a store of value, often compared to gold but with superior properties like divisibility and portability.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>Financial Freedom</h3>
+                    <p>Enables borderless transactions and financial sovereignty, free from traditional banking constraints.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>Institutional Adoption</h3>
+                    <p>Major financial institutions and corporations are increasingly integrating Bitcoin into their operations and balance sheets.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>Technological Innovation</h3>
+                    <p>Bitcoin's underlying technology has sparked a revolution in finance, leading to countless innovations and applications.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>Global Impact</h3>
+                    <p>Providing financial services to the unbanked and underbanked populations worldwide, promoting financial inclusion.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>Economic Sovereignty</h3>
+                    <p>Giving individuals control over their wealth without reliance on traditional financial institutions or government policies.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>Future of Money</h3>
+                    <p>Pioneering a new form of digital currency that could reshape the global financial system and monetary policies.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="simple-icons--bnbchain"></span>
+                    <h2>BlockChain</h2>
+                    <p>Powering the future of decentralized innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Markets</a></li>
+                            <li><a href="#">Charts</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Whitepaper</a></li>
+                            <li><a href="#">Reesearch</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">Developers</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe for the latest updates</p>
+                    <div class="footer-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon twitter"></a>
+                        <a href="#" class="social-icon discord"></a>
+                        <a href="#" class="social-icon telegram"></a>
+                        <a href="#" class="social-icon github"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 BlockChain. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Legal</a>
+                </div>
+                <div class="disclaimer">
+                    <p>Cryptocurrency trading involves risk. Please do your own research before making any investment decisions.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../nav.js"></script>
+</body>
+</html>

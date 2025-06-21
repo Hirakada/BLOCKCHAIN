@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subsscribe</title>
+    <link rel="stylesheet" href="subs.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23150c28' d='M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24z'/%3E%3Cpath fill='lightgray' d='M5.631 3.676L12.001 0l6.367 3.676l-2.34 1.358L12 2.716L7.972 5.034l-2.34-1.358Zm12.737 4.636l-2.34-1.358L12 9.272L7.972 6.954l-2.34 1.358v2.716l4.026 2.318v4.636L12 19.341l2.341-1.359v-4.636l4.027-2.318zm0 7.352v-2.716l-2.34 1.358v2.716zm1.663.96l-4.027 2.318v2.717l6.368-3.677V10.63l-2.34 1.358v4.636Zm-2.34-10.63l2.34 1.358v2.716l2.341-1.358V5.994l-2.34-1.358zM9.657 19.926v2.716L12 24l2.341-1.358v-2.716l-2.34 1.358l-2.343-1.358ZM5.63 15.664l2.341 1.358v-2.716l-2.34-1.358v2.716Zm4.027-9.67L12 7.352l2.341-1.358l-2.34-1.358l-2.343 1.358Zm-5.69 1.358L6.31 5.994L3.968 4.636l-2.34 1.358V8.71l2.34 1.358zm0 4.636l-2.34-1.358v7.352l6.368 3.677v-2.717l-4.028-2.318z'/%3E%3C/svg%3E"
+        type="image/svg+xml" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="simple-icons--bnbchain"></span>
+                <h1>BlockChain</h1>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <div class="nav-links">
+                <a href="../">HOME</a>
+                <a href="../news/news.html">NEWS</a>
+                <a href="../market/market.html">MARKETS</a>
+                <a href="../chart/chart.html">CHARTS</a>
+                <a href="../about/about.html">ABOUT</a>
+            </div>
+            <div class="acc-links">
+                <a href="subs.html" class="register">SUBSCRIBE</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="pricing-cta">
+            <div class="pricing-container">
+                <div class="pricing-header">
+                    <h2>Choose Your Plan</h2>
+                    <p>Select the perfect plan for your crypto journey. All plans include our core features with
+                        different levels of access.</p>
+                </div>
+
+                <div class="pricing-grid" id="pricing-grid">
+                    <div class="pricing-card" data-plan="Basic" data-price="Free" data-period="/month">
+                        <div class="plan-header">
+                            <h3>Basic</h3>
+                            <div class="price">
+                                <span class="amount">Free</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="features-list">
+                            <li><span class="check-icon"></span>Basic market analysis</li>
+                            <li><span class="check-icon"></span>Daily price updates</li>
+                            <li><span class="check-icon"></span>Basic portfolio tracking</li>
+                            <li><span class="check-icon"></span>Community access</li>
+                            <li class="disabled"><span class="cross-icon"></span>Whale alerts</li>
+                            <li class="disabled"><span class="cross-icon"></span>Advanced analytics</li>
+                        </ul>
+                        <button class="plan-btn select-plan-btn" data-plan="Basic">Select Plan</button>
+                    </div>
+
+
+                    <div class="pricing-card featured" data-plan="Pro" data-price="$29" data-period="/month">
+                        <div class="popular-tag">Most Popular</div>
+                        <div class="plan-header">
+                            <h3>Pro</h3>
+                            <div class="price">
+                                <span class="amount">$29</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="features-list">
+                            <li><span class="check-icon"></span>Advanced market analysis</li>
+                            <li><span class="check-icon"></span>Real-time price alerts</li>
+                            <li><span class="check-icon"></span>Advanced portfolio tracking</li>
+                            <li><span class="check-icon"></span>Priority community access</li>
+                            <li><span class="check-icon"></span>Whale movement alerts</li>
+                            <li><span class="check-icon"></span>Basic analytics</li>
+                        </ul>
+                        <button class="plan-btn select-plan-btn" data-plan="Pro">Select Plan</button>
+                    </div>
+
+                    <div class="pricing-card" data-plan="Enterprise" data-price="$99" data-period="/month">
+                        <div class="plan-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">
+                                <span class="amount">$99</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="features-list">
+                            <li><span class="check-icon"></span>Premium market analysis</li>
+                            <li><span class="check-icon"></span>Instant price alerts</li>
+                            <li><span class="check-icon"></span>Advanced portfolio tracking</li>
+                            <li><span class="check-icon"></span>VIP community access</li>
+                            <li><span class="check-icon"></span>Real-time whale alerts</li>
+                            <li><span class="check-icon"></span>Advanced analytics & API</li>
+                        </ul>
+                        <button class="plan-btn select-plan-btn" data-plan="Enterprise">Select Plan</button>
+                    </div>
+                </div>
+
+
+                <div class="subscription-form-container">
+                    <form class="subscription-form" id="subscription-form">
+                        <h2>Complete Your Subscription</h2>
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Username" required />
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com" required />
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="6 Symbol Alphanumeric Character" required />
+                        <div class="payment-info-box">
+                            <div class="payment-info-title">
+                                <span class="payment-icon"></span>
+                                <span>Plan Information</span>
+                            </div>
+                            <div class="selected-plan-box" id="selected-plan-box">
+                                <span>Selected Plan:</span>
+                                <span class="selected-plan-label" id="selected-plan-label">Pro - $29/month</span>
+                                <span class="selected-plan-icon"></span>
+                            </div>
+
+                            <div id="payment-va-section" class="payment-va-section" style="display: none;">
+                                <div class="payment-va-title">Virtual Account Payment</div>
+                                <div class="payment-va-details">
+                                    <div class="payment-va-row">
+                                        <span class="payment-va-label">Bank:</span>
+                                        <span class="payment-va-value" id="payment-bank">BCA</span>
+                                    </div>
+                                    <div class="payment-va-row">
+                                        <span class="payment-va-label">VA Number:</span>
+                                        <span class="payment-va-value" id="payment-va-number">8277601234567890</span>
+                                        <button type="button" class="copy-va-btn" id="copy-va-btn">Copy</button>
+                                    </div>
+                                    <div class="payment-va-row">
+                                        <span class="payment-va-label">Total:</span>
+                                        <span class="payment-va-value" id="payment-total">$29.00</span>
+                                    </div>
+                                    <div class="payment-va-expiry">
+                                        Please complete payment within:
+                                        <span id="payment-timer" class="payment-timer">23:59:59</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="presubmit-message" class="presubmit-message">
+                                <p>Complete the form and click "Check Payment Details" to view payment information.</p>
+                            </div>
+
+                            <div id="free-plan-message" class="free-plan-message" style="display: none;">
+                                <p>You've selected the Free plan! No payment required.</p>
+                                <p>Just submit the form to get started.</p>
+                            </div>
+                        </div>
+                        <div class="terms-row">
+                            <input type="checkbox" id="terms" name="terms" required />
+                            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy
+                                    Policy</a></label>
+                            <span class="error-message" id="terms-error"></span>
+                        </div>
+
+
+                        <button type="button" id="check-payment-btn" class="complete-subscription-btn">Check Payment
+                            Details</button>
+
+
+                        <div id="form-errors" class="form-errors" style="display: none;">
+                            <div class="error-icon"></div>
+                            <p>Please fix the following errors:</p>
+                            <ul id="error-list"></ul>
+                        </div>
+
+
+                        <div id="payment-success" class="payment-success" style="display: none;">
+                            <p>Your details have been verified! Please complete the payment to continue.</p>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="simple-icons--bnbchain"></span>
+                    <h2>BlockChain</h2>
+                    <p>Powering the future of decentralized innovation</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Markets</a></li>
+                            <li><a href="#">Charts</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Whitepaper</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">Developers</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe for the latest updates</p>
+                    <div class="footer-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon twitter"></a>
+                        <a href="#" class="social-icon discord"></a>
+                        <a href="#" class="social-icon telegram"></a>
+                        <a href="#" class="social-icon github"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 BlockChain. All rights reserved.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Legal</a>
+                </div>
+                <div class="disclaimer">
+                    <p>Cryptocurrency trading involves risk. Please do your own research before making any investment
+                        decisions.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="subs.js"></script>
+    <script src="../nav.js"></script>
+</body>
+
+</html>
