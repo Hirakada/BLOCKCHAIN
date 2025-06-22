@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', function () {
             errors.push(errorMsg);
             isValid = false;
         }
-        const isAuth = await fetchSignInMethodsForEmail(auth, emailInput.value.trim());
-        if (isAuth) {
+        const isExist = await fetchSignInMethodsForEmail(auth, emailInput.value.trim());
+        if (isExist && isExist.length > 0) {
             const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
             errors.push(errorMsg);
             isValid = false;
