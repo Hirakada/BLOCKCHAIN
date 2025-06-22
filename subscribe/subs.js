@@ -166,11 +166,9 @@ document.addEventListener('DOMContentLoaded', function () {
             isValid = false;
         }
 
-        // Periksa apakah email diisi
+        // Periksa apakah email diisi dan valid
         const emailValue = emailInput.value.trim();
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const isExist = await fetchSignInMethodsForEmail(auth, emailValue);
-        console.log(isExist);
 
         if (!emailValue) {
             const errorMsg = setFieldError(emailInput, 'Mohon masukkan alamat email Anda');
@@ -180,12 +178,30 @@ document.addEventListener('DOMContentLoaded', function () {
             const errorMsg = setFieldError(emailInput, 'Mohon masukkan alamat email yang valid');
             errors.push(errorMsg);
             isValid = false;
+        } else if (isValid) {
+            try {
+                const isExist = await fetchSignInMethodsForEmail(auth, emailValue);
+                console.log("Firebase check result (isExist):", isExist);
 
-        } else if (isExist && isExist.length > 0) {
-            const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
-            errors.push(errorMsg);
-            isValid = false;
-        }
+                if (isExist && isExist.length > 0) {
+                    const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
+                    errors.push(errorMsg);
+                    isValid = false;
+                }
+            } catch (firebaseError) {
+                console.error("Error during fetchSignInMethodsForEmail:", firebaseError);
+
+                if (firebaseError.code === 'auth/invalid-email') {
+                    const errorMsg = setFieldError(emailInput, 'Format email tidak valid. (Firebase menolak email ini)');
+                    errors.push(errorMsg);
+                    isValid = false;
+                } else {
+                    const errorMsg = setFieldError(emailInput, 'Terjadi kesalahan saat memeriksa email. Silakan coba lagi.');
+                    errors.push(errorMsg);
+                    isValid = false;
+                }
+            }
+}
         
         // Periksa password
         if (!passwordInput.value.trim()) {
