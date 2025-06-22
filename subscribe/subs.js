@@ -14,8 +14,6 @@ const {
     where,
     getAuth,
     createUserWithEmailAndPassword,
-    fetchSignInMethodsForEmail,
-    signInWithEmailAndPassword,
     deleteUser
 } = AuthModule;
 
@@ -274,8 +272,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("User signin with UID:", user.uid);
             }
             
-            
-            const currentStatus = (selectedPlanData.price == 'Free') ? false : true;
+            const currentStatus = (Data.selectedPlanprice === 'Free') ? false : true;
+
             await setDoc(doc(db, "users", docId), {
                 id: user.uid,
                 fullName: fullNameInput.value,
