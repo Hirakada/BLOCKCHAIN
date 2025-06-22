@@ -201,8 +201,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     isValid = false;
                 }
             }
-}
-        
+        }
+
         // Periksa password
         if (!passwordInput.value.trim()) {
             const errorMsg = setFieldError(passwordInput, 'Mohon masukkan kata sandi Anda');
