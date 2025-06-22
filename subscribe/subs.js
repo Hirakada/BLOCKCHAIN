@@ -198,12 +198,15 @@ document.addEventListener('DOMContentLoaded', function () {
             errors.push(errorMsg);
             isValid = false;
         }
-
         const isSubscribed = await checkSubscriptionByIdAndEmail(emailInput.value.trim());
         if (isSubscribed) {
             const errorMsg = setFieldError(emailInput, 'Email sudah digunakan dengan langgannan masih aktif');
             errors.push(errorMsg);
             isValid = false;
+        } else if (isSubscribed && selectedPlanData.price == 'Free') {
+            const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar sebagai Free Member');
+            errors.push(errorMsg);
+            isValid = false;   
         }
 
         // Periksa persetujuan syarat
@@ -255,20 +258,29 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDate = new Date(startDate.getTime() + planDuration * 30 * 24 * 60 * 60 * 1000);
 
         let user = null;
+        let userCredential = null;
 
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            user = userCredential.user;
+            const isAuth = await fetchSignInMethodsForEmail(auth, email)
+            if (!isAuth) {
+                userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                user = userCredential.user;
+                console.log("User registered with UID:", user.uid);
+            } else {
+                userCredential= await signInWithEmailAndPassword(auth, email, password)
+                user = userCredential.user;
+                console.log("User signin with UID:", user.uid);
+            }
             
-            console.log("User registered with UID:", user.uid);
-
+            
+            const currentStatus = (selectedPlanData.price == 'Free') ? false : true;
             await setDoc(doc(db, "users", docId), {
                 id: user.uid,
                 fullName: fullNameInput.value,
                 email: emailInput.value.trim(),
                 plan: selectedPlanData.name,
                 planEnd: endDate,
-                status: true
+                status: currentStatus
             });
             
             await addDoc(collection(db, "users", docId, "payment"), {
