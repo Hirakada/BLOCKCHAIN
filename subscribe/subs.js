@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
             errors.push(errorMsg);
             isValid = false;
         }
-        const isAuth = await fetchSignInMethodsForEmail(auth, emailInput.value.trim());;
+        const isAuth = await fetchSignInMethodsForEmail(auth, emailInput.value.trim());
         if (isAuth) {
             const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
             errors.push(errorMsg);
