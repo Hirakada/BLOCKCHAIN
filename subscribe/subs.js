@@ -198,12 +198,28 @@ document.addEventListener('DOMContentLoaded', function () {
             const errorMsg = setFieldError(passwordInput, 'Kata sandi harus mengandung huruf, angka, dan simbol');
             errors.push(errorMsg);
             isValid = false;
-        }
-        const isExist = await fetchSignInMethodsForEmail(auth, emailInput.value.trim());
-        if (isExist && isExist.length > 0) {
-            const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
-            errors.push(errorMsg);
-            isValid = false;
+        } else if (isValid && emailValue && emailPattern.test(emailValue)) {
+            try {
+                const isExist = await fetchSignInMethodsForEmail(auth, emailValue);
+
+                if (isExist && isExist.length > 0) {
+                    const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
+                    errors.push(errorMsg);
+                    isValid = false;
+                }
+            } catch (firebaseError) {
+                console.error("Firebase email check error:", firebaseError); 
+
+                if (firebaseError.code === 'auth/invalid-email') {
+                    const errorMsg = setFieldError(emailInput, 'Format email tidak valid. (Firebase menolak email ini)');
+                    errors.push(errorMsg);
+                    isValid = false;
+                } else {
+                    const errorMsg = setFieldError(emailInput, 'Terjadi kesalahan saat memeriksa email. Silakan coba lagi.');
+                    errors.push(errorMsg);
+                    isValid = false; 
+                }
+            }
         }
 
         // Periksa persetujuan syarat
