@@ -167,17 +167,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Periksa apakah email diisi
-        if (!emailInput.value.trim()) {
+        const emailValue = emailInput.value.trim();
+
+        if (!emailValue) {
             const errorMsg = setFieldError(emailInput, 'Mohon masukkan alamat email Anda');
             errors.push(errorMsg);
             isValid = false;
         } else {
-            // Validasi email sederhana
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(emailInput.value.trim())) {
+            if (!emailPattern.test(emailValue)) {
                 const errorMsg = setFieldError(emailInput, 'Mohon masukkan alamat email yang valid');
                 errors.push(errorMsg);
                 isValid = false;
+            } else if (isValid) {
+                try {
+                    const isExist = await fetchSignInMethodsForEmail(auth, emailValue);
+
+                    if (isExist && isExist.length > 0) {
+                        const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
+                        errors.push(errorMsg);
+                        isValid = false;
+                    }
+                } catch (firebaseError) {
+                    console.error("Firebase email check error:", firebaseError);
+
+                    if (firebaseError.code === 'auth/invalid-email') {
+                        const errorMsg = setFieldError(emailInput, 'Format email tidak valid. (Firebase menolak email ini)');
+                        errors.push(errorMsg);
+                        isValid = false;
+                    } else {
+                        const errorMsg = setFieldError(emailInput, 'Terjadi kesalahan saat memeriksa email. Silakan coba lagi.');
+                        errors.push(errorMsg);
+                        isValid = false;
+                    }
+                }
             }
         }
 
@@ -198,29 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const errorMsg = setFieldError(passwordInput, 'Kata sandi harus mengandung huruf, angka, dan simbol');
             errors.push(errorMsg);
             isValid = false;
-        } else if (isValid && emailValue && emailPattern.test(emailValue)) {
-            try {
-                const isExist = await fetchSignInMethodsForEmail(auth, emailValue);
-
-                if (isExist && isExist.length > 0) {
-                    const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
-                    errors.push(errorMsg);
-                    isValid = false;
-                }
-            } catch (firebaseError) {
-                console.error("Firebase email check error:", firebaseError); 
-
-                if (firebaseError.code === 'auth/invalid-email') {
-                    const errorMsg = setFieldError(emailInput, 'Format email tidak valid. (Firebase menolak email ini)');
-                    errors.push(errorMsg);
-                    isValid = false;
-                } else {
-                    const errorMsg = setFieldError(emailInput, 'Terjadi kesalahan saat memeriksa email. Silakan coba lagi.');
-                    errors.push(errorMsg);
-                    isValid = false; 
-                }
-            }
-        }
+        } 
 
         // Periksa persetujuan syarat
         if (!termsCheckbox.checked) {
