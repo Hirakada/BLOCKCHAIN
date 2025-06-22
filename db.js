@@ -4,7 +4,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getFirestore, collection, doc, setDoc, addDoc, getDocs, getDoc, query, where } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword, deleteUser, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, deleteUser, signInWithEmailAndPassword, fetchSignInMethodsForEmail } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -41,5 +41,6 @@ export {
   getAuth,
   createUserWithEmailAndPassword,
   deleteUser,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  fetchSignInMethodsForEmail
 };
