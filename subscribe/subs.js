@@ -250,9 +250,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const docId = email.replace(/[^a-zA-Z0-9]/g, '_');
         const password = passwordInput.value;
 
-        const planDurationMonths = 1; // 1 bulan
+        const planDuration = 1; // 1 bulan
         const startDate = new Date();
-        const endDate = new Date(startDate.getTime() + planDurationMonths * 30 * 24 * 60 * 60 * 1000);
+        const endDate = new Date(startDate.getTime() + planDuration * 30 * 24 * 60 * 60 * 1000);
 
         let user = null;
 
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
             await addDoc(collection(db, "users", docId, "payment"), {
                 plan: selectedPlanData.name,
                 price: selectedPlanData.price,
-                duration: `${planDurationMonth} Month`,
+                duration: `${planDuration} Month`,
                 bank: paymentBank.textContent,
                 virtualAccount: paymentVaNumber.textContent,
                 paidAt: startDate,
