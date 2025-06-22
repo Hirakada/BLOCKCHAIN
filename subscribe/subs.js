@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
             await addDoc(collection(db, "users", docId, "payment"), {
                 plan: selectedPlanData.name,
                 price: selectedPlanData.price,
-                duration: `${planDuration} minute`,
+                duration: `${planDurationMonth} Month`,
                 bank: paymentBank.textContent,
                 virtualAccount: paymentVaNumber.textContent,
                 paidAt: startDate,
