@@ -282,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });            
 
             alert("✅ Saved to Firebase!");
+            window.location.href = "../";
         } catch (err) {
             console.error("❌ Error saat createUser atau setDoc:", err);
 
@@ -296,6 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             alert("Gagal registrasi: " + err.message);
+            location.reload();
         }
     }
 
@@ -363,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //Apabila copy VA tidak diklik selama 5 detik maka payment failed
             let copyTimeout = setTimeout(() => {
                 alert("❌ Pembayaran gagal karena tidak menyalin nomor VA.");
-                window.location.href = "../";
+                location.reload();
             }, timerDuration*1000);
 
             // Mmbatalkan timeout jika tombol copy ditekan
@@ -457,7 +459,6 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (btnText === "Registrasi Selesai!") {
                 await saveData();
                 checkPaymentBtn.textContent = "Periksa Detail Pembayaran"; 
-                window.location.href = "../";
             }
         });
     }
@@ -486,7 +487,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // For paid plans
                 await saveData(); // This is async but not awaited
-                window.location.href = "../"; // Redirects immediately
             } catch (err) {
                 console.error('Gagal menyalin: ', err);
             }
