@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
             await setDoc(doc(db, "users", docId), {
                 id: user.uid,
                 fullName: fullNameInput.value,
-                email: emailInput.value.trim(),
+                email: email,
                 plan: selectedPlanData.name,
                 planEnd: endDate,
                 status: currentStatus
