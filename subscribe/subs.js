@@ -14,8 +14,6 @@ const {
     where,
     getAuth,
     createUserWithEmailAndPassword,
-    fetchSignInMethodsForEmail,
-    signInWithEmailAndPassword,
     deleteUser
 } = AuthModule;
 
@@ -200,15 +198,11 @@ document.addEventListener('DOMContentLoaded', function () {
             errors.push(errorMsg);
             isValid = false;
         }
-        const isSubscribed = await checkSubscriptionByIdAndEmail(emailInput.value.trim());
-        if (isSubscribed) {
+        const isAuth = await fetchSignInMethodsForEmail(auth, emailInput.value.trim());;
+        if (isAuth) {
             const errorMsg = setFieldError(emailInput, 'Email sudah digunakan dengan langgannan masih aktif');
             errors.push(errorMsg);
             isValid = false;
-        } else if (isSubscribed && selectedPlanData.price == 'Free') {
-            const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar sebagai Free Member');
-            errors.push(errorMsg);
-            isValid = false;   
         }
 
         // Periksa persetujuan syarat
@@ -260,29 +254,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDate = new Date(startDate.getTime() + planDuration * 30 * 24 * 60 * 60 * 1000);
 
         let user = null;
-        let userCredential = null;
 
         try {
-            const isAuth = await fetchSignInMethodsForEmail(auth, email)
-            if (!isAuth) {
-                userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                user = userCredential.user;
-                console.log("User registered with UID:", user.uid);
-            } else {
-                userCredential= await signInWithEmailAndPassword(auth, email, password)
-                user = userCredential.user;
-                console.log("User signin with UID:", user.uid);
-            }
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            user = userCredential.user;
             
-            const currentStatus = (Data.selectedPlanprice === 'Free') ? false : true;
+            console.log("User registered with UID:", user.uid);
 
+            const checkStatus = (selectedPlanData.price == 'Free') ? false : true
             await setDoc(doc(db, "users", docId), {
                 id: user.uid,
                 fullName: fullNameInput.value,
-                email: email,
+                email: emailInput.value.trim(),
                 plan: selectedPlanData.name,
                 planEnd: endDate,
-                status: currentStatus
+                status: checkStatus
             });
             
             await addDoc(collection(db, "users", docId, "payment"), {
@@ -300,15 +286,15 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (err) {
             console.error("❌ Error saat createUser atau setDoc:", err);
 
-            // // Cek kalau user sudah ter-assign baru hapus
-            // if (user) {
-            //     try {
-            //         await deleteUser(user);
-            //         console.log("User deleted due to Firestore error");
-            //     } catch (deleteErr) {
-            //         console.error("❌ Gagal menghapus user setelah error:", deleteErr);
-            //     }
-            // }
+            // Cek kalau user sudah ter-assign baru hapus
+            if (user) {
+                try {
+                    await deleteUser(user);
+                    console.log("User deleted due to Firestore error");
+                } catch (deleteErr) {
+                    console.error("❌ Gagal menghapus user setelah error:", deleteErr);
+                }
+            }
 
             alert("Gagal registrasi: " + err.message);
             location.reload();
@@ -316,27 +302,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
      //Cek apakah email sudah digunakan dan masa masih aktif
-    async function checkSubscriptionByIdAndEmail(emailToCheck) {
-        try {
-            const acc = collection(db, "account");
-            // Query untuk email and active status
-            const q = query(acc, 
-                            where("email", "==", emailToCheck), 
-                            where("status", "==", "Active"));
+    // async function checkSubscriptionByIdAndEmail(emailToCheck) {
+    //     try {
+    //         const acc = collection(db, "account");
+    //         // Query untuk email and active status
+    //         const q = query(acc, 
+    //                         where("email", "==", emailToCheck), 
+    //                         where("status", "==", "Active"));
 
-            const querySnapshot = await getDocs(q);
+    //         const querySnapshot = await getDocs(q);
 
-            if (!querySnapshot.empty) {
-                console.log("Found active subscription for:", emailToCheck);
-                return true;
-            }
+    //         if (!querySnapshot.empty) {
+    //             console.log("Found active subscription for:", emailToCheck);
+    //             return true;
+    //         }
 
-            return false;
-        } catch (error) {
-            console.error("Error checking subscription:", error);
-            return false;
-        }
-    }
+    //         return false;
+    //     } catch (error) {
+    //         console.error("Error checking subscription:", error);
+    //         return false;
+    //     }
+    // }
 
     // Fungsi untuk menangani tampilan detail pembayaran
     async function showPaymentDetails() {
