@@ -14,6 +14,7 @@ const {
     where,
     getAuth,
     createUserWithEmailAndPassword,
+    fetchSignInMethodsForEmail,
     deleteUser
 } = AuthModule;
 
