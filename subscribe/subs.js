@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         const isAuth = await fetchSignInMethodsForEmail(auth, emailInput.value.trim());;
         if (isAuth) {
-            const errorMsg = setFieldError(emailInput, 'Email sudah digunakan dengan langgannan masih aktif');
+            const errorMsg = setFieldError(emailInput, 'Email sudah terdaftar');
             errors.push(errorMsg);
             isValid = false;
         }
