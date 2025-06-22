@@ -298,15 +298,15 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (err) {
             console.error("❌ Error saat createUser atau setDoc:", err);
 
-            // Cek kalau user sudah ter-assign baru hapus
-            if (user) {
-                try {
-                    await deleteUser(user);
-                    console.log("User deleted due to Firestore error");
-                } catch (deleteErr) {
-                    console.error("❌ Gagal menghapus user setelah error:", deleteErr);
-                }
-            }
+            // // Cek kalau user sudah ter-assign baru hapus
+            // if (user) {
+            //     try {
+            //         await deleteUser(user);
+            //         console.log("User deleted due to Firestore error");
+            //     } catch (deleteErr) {
+            //         console.error("❌ Gagal menghapus user setelah error:", deleteErr);
+            //     }
+            // }
 
             alert("Gagal registrasi: " + err.message);
             location.reload();
