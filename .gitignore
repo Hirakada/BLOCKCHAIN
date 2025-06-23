@@ -1,0 +1,179 @@
+# General
+.DS_Store
+.env
+.idea/
+.vscode/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+node_modules/
+build/
+dist/
+log/
+tmp/
+temp/
+coverage/
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.sass-cache/
+.project
+.classpath
+.settings/
+.cache/
+.tool-versions
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# macOS specific
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Windows specific
+Desktop.ini
+Thumbs.db
+
+# Dependency management
+## Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json # Only if you're not using it to lock dependencies
+yarn.lock         # Only if you're not using it to lock dependencies
+
+## Python
+__pycache__/
+*.pyc
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+.pytest_cache/
+
+## Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+.gradle/
+build/
+out/
+
+## Ruby
+.bundle/
+Gemfile.lock
+vendor/bundle/
+
+## Go
+bin/
+pkg/
+*.exe
+
+## C# / .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.pdb
+*.pidb
+*.kdev4
+*.aps
+*.o
+*.lo
+*.la
+*.so
+*.a
+*.lib
+*.ncb
+*.resource
+*.sdf
+*.opensdf
+*.docstates
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+*.sln.docstates
+
+# IDE and Editor files
+.idea/             # IntelliJ IDEA
+.vscode/           # VS Code
+*.iml              # IntelliJ IDEA module files
+*.ipr              # IntelliJ IDEA project files
+*.iws              # IntelliJ IDEA workspace files
+.project           # Eclipse
+.classpath         # Eclipse
+.settings/         # Eclipse
+*.sublime-project
+*.sublime-workspace
+.metadata/         # Eclipse workspace
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.obj
+*.lib
+*.bin
+*.out
+*.app
+*.apk
+*.ipa
+*.dmg
+*.iso
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+*.sqlite3
+
+# Temporary files
+*.tmp
+*~
+*.bak
+*.swp
+*.swo
+
+# Configuration files
+.env
+.env.*
+config.local.js
+config.development.js
+config.production.js
+
+# Specific to Git
+.git/
+.gitattributes
+.gitkeep
+
+# Thumbnails and system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Visual Studio Code specific
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/*.code-workspace
+
+# Other common ignored files
+!.gitkeep # To allow empty directories to be committed
+/private/ # Example of ignoring a specific directory
